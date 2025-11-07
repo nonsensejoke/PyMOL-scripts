@@ -19,7 +19,7 @@ outfile=""
 # 按行读取，遇到 $$$$ 时切到下一个文件
 while IFS= read -r line || [ -n "$line" ]; do
   if [ -z "${outfile}" ]; then
-    outfile="${prefix}_${i}.sdf"
+    outfile=$(printf "${prefix}_%04d.sdf" "$i")
     : > "$outdir"/"$outfile"     # 创建/清空文件
   fi
 
